@@ -36,13 +36,10 @@
                     </div>
                     <?php if(!empty($data->profile) && isset($data->profile)){ ?>
 
-                       <?php $contents = Storage::path($data->profile);
-                       print_r(($contents));
-                       ?>
 
                         <div style="margin-left:212px">
                             <span class="pip">
-                                <img class="imageThumb" src="{{ $contents }}" title="" alt="no img">
+                                <img class="imageThumb" src="{{ asset('/'.$data->profile) }}" title="" alt="no img">
                             </span>
                             <br/>
                             <button class="remove" onclick="myFunction({{ $data->id }})" onclik="profileImageRemove({{ $data->id }})">Remove image</button>
@@ -137,10 +134,8 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Profile update successfully...',
-                        showDenyButton: true,
-                        showCancelButton: true,
+                        // showCancelButton: true,
                         confirmButtonText: 'Save',
-                        denyButtonText: `Don't save`,
                         }).then((result) => {
                         if (result.isConfirmed) {
                             location.reload(true);
@@ -162,7 +157,6 @@
         });
 
         function myFunction(id) {
-            alert(id)
             var id = id;
             $.ajaxSetup({
                 headers: {

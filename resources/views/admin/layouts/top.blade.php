@@ -85,12 +85,9 @@
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                    <?php $data = Auth::user(); ?>
-                    @php 
-                    $path = Storage::url($data->profile);
-                    @endphp
+                    <?php $data = Auth::user(); ?>                 
                     <?php if(!empty($data->profile)){ ?>
-                    <img src="url({{ asset($path) }})" alt="image">
+                    <img src="{{ asset('/'.$data->profile) }}" alt="image">
                     <?php }else{ ?>
                         <img src="{{ asset('assets/images/profile_images.jpeg') }}" alt="image">
                     <?php } ?>
@@ -106,7 +103,7 @@
                 <?php $data = Auth::user(); ?>
                  
                     <?php if(!empty($data->profile)){ ?>
-                    <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('assets/images/profile_images.jpeg') }}" alt="">
+                    <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('/'.$data->profile) }}" alt="">
                     <?php }else{ ?>
                         <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('assets/images/profile_images.jpeg') }}" alt="">
                     <?php } ?>
