@@ -12,3 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
+    <link rel="shortcut icon" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom_css.css') }}">
+
+    @yield('style')
