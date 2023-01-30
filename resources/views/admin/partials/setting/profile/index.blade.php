@@ -37,14 +37,15 @@
                     <?php if(!empty($data->profile) && isset($data->profile)){ ?>
 
 
-                        <div style="margin-left:212px">
-                            <span class="pip">
-                                <img class="imageThumb" src="{{ asset('/'.$data->profile) }}" title="" alt="no img">
-                            </span>
-                            <br/>
-                            <button class="remove" onclick="myFunction({{ $data->id }})" onclik="profileImageRemove({{ $data->id }})">Remove image</button>
+                        <div class="row" style="margin-left:212px">
+                           
+                                <div class="image-area">
+                                    <img src="{{ asset('/'.$data->profile) }}"  alt="Preview">
+                                    <a class="remove-image" onclick="myFunction({{ $data->id }})" style="display: inline;">&#215;</a>
+                                </div>
+                         
                         </div>
-                        
+                        <br>
                         <?php } ?>
                     <div class="form-group row">
                     <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Old Password</label>
@@ -163,7 +164,16 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }
             });
-            $.ajax ({
+            Swal.fire({
+            title: 'Do you want to Delete Profile Image?',
+            showDenyButton: true,
+            // showCancelButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: `No`,
+            }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax ({
                 type : "POST",
                 url :"{{route('profile_image_remove')}}",
                 data: {
@@ -172,10 +182,7 @@
                 success: function(responce) {
                     
                     if(responce.error == 0){
-                        Swal.fire({
-                        icon: 'success',
-                        title: 'Image deleted successfully...',
-                    })
+                        location.reload(true);
                     }
                     else{
                         Swal.fire({
@@ -187,7 +194,13 @@
                    
                 }
             });
+            Swal.fire('Profile Deleted Successfully!', '', 'success')
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+            })
             return false;
+            
         }
     $(document).ready(function() {
 
