@@ -1,75 +1,73 @@
 @include('admin.layouts.header')
 
 <div class="content-wrapper">
-    <div class="main-panel">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                <h4 class="card-title">User Profile</h4>
-                <form  autocomplete="off" id="regForm" action="{{ route('profile-save') }}" method="POST" enctype="multipart/form-data" >
-                    @csrf
-                <div class="form-group row">
-                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Name<span class="text-danger">*</span> </label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" value="{{ $data->name }}" name="name" id="name" placeholder="Name">
-                    </div>
-                    <input type="hidden" name="id" value="{{ $data->id }}" >
-                    </div>
-                    <div class="form-group row">
-                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="email" value="{{ $data->email }}" name="email" autocomplete="off" placeholder="Username">
-                    </div>
-                    </div>
-
-                    <div class="form-group row">
-                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" id="mobile" maxlength="10" value="{{ $data->mobile }}" name="mobile" placeholder="Mobile number">
-                    </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Profile</label>
-                        <div class="col-sm-9 field">
-                            <input type="file" class="form-control" id="files" name="files"  >
-                        </div>
-                    </div>
-                    <?php if(!empty($data->profile) && isset($data->profile)){ ?>
-
-
-                        <div class="row" style="margin-left:212px">
-                           
-                                <div class="image-area">
-                                    <img src="{{ asset('/'.$data->profile) }}"  alt="Preview">
-                                    <a class="remove-image" onclick="myFunction({{ $data->id }})" style="display: inline;">&#215;</a>
-                                </div>
-                         
-                        </div>
-                        <br>
-                        <?php } ?>
-                    <div class="form-group row">
-                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Old Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" class="form-control" id="old_password" autocomplete="old-password" name="old_password" placeholder="Old Password">
-                    </div>
-                    </div>
-                    <div class="form-group row">
-                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" class="form-control" id="password" autocomplete="new-password" name="password" placeholder="Password">
-                    </div>
-                    </div>
-                    <div class="form-group row">
-                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" class="form-control" id="confoirm_password" name="confoirm_password" placeholder="Confirm Password">
-                    </div>
-                    </div>
-                    
-                    <button id="submit" name="submit" type="submit"  style="float:right"    class="btn btn-primary me-2">Submit</button>
-                    <!-- <button class="btn btn-light">Cancel</button> -->
-                </form>
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+            <h4 class="card-title">User Profile</h4>
+            <form  autocomplete="off" id="regForm" action="{{ route('profile-save') }}" method="POST" enctype="multipart/form-data" >
+                @csrf
+            <div class="form-group row">
+                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Name<span class="text-danger">*</span> </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" value="{{ $data->name }}" name="name" id="name" placeholder="Name">
                 </div>
+                <input type="hidden" name="id" value="{{ $data->id }}" >
+                </div>
+                <div class="form-group row">
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="email" value="{{ $data->email }}" name="email" autocomplete="off" placeholder="Username">
+                </div>
+                </div>
+
+                <div class="form-group row">
+                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" id="mobile" maxlength="10" value="{{ $data->mobile }}" name="mobile" placeholder="Mobile number">
+                </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Profile</label>
+                    <div class="col-sm-9 field">
+                        <input type="file" class="form-control" id="files" name="files"  >
+                    </div>
+                </div>
+                <?php if(!empty($data->profile) && isset($data->profile)){ ?>
+
+
+                    <div class="form-group row" style="margin-left:212px">
+                        
+                            <div class="col-sm-9 field image-area" style="margin-left: 55px;">
+                                <img src="{{ asset('public/'.$data->profile) }}"  alt="Preview">
+                                <a class="remove-image" onclick="myFunction({{ $data->id }})" style="display: inline;">&#215;</a>
+                            </div>
+                        
+                    </div>
+                    <br>
+                    <?php } ?>
+                <div class="form-group row">
+                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Old Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="old_password" autocomplete="old-password" name="old_password" placeholder="Old Password">
+                </div>
+                </div>
+                <div class="form-group row">
+                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="password" autocomplete="new-password" name="password" placeholder="Password">
+                </div>
+                </div>
+                <div class="form-group row">
+                <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="confoirm_password" name="confoirm_password" placeholder="Confirm Password">
+                </div>
+                </div>
+                
+                <button id="submit" name="submit" type="submit"  style="float:right"    class="btn btn-primary me-2">Submit</button>
+                <!-- <button class="btn btn-light">Cancel</button> -->
+            </form>
             </div>
         </div>
     </div>
@@ -203,44 +201,39 @@
             
         }
     $(document).ready(function() {
+        if (window.File && window.FileList && window.FileReader) {
+            $("#files").on("change", function(e) {
+            var files = e.target.files,
+                filesLength = files.length;
+            for (var i = 0; i < filesLength; i++) {
+                var f = files[i]
+                var fileReader = new FileReader();
+                fileReader.onload = (function(e) {
+                var file = e.target;
+                $("<span class=\"pip\">" +
+                    "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                    "<br/><span class=\"remove\">Remove image</span>" +
+                    "</span>").insertAfter("#files");
+                $(".remove").click(function(){
+                    $(this).parent(".pip").remove();
+                });
 
+                // Old code here
+                /*$("<img></img>", {
+                    class: "imageThumb",
+                    src: e.target.result,
+                    title: file.name + " | Click to remove"
+                }).insertAfter("#files").click(function(){$(this).remove();});*/
 
-
-  if (window.File && window.FileList && window.FileReader) {
-    $("#files").on("change", function(e) {
-      var files = e.target.files,
-        filesLength = files.length;
-      for (var i = 0; i < filesLength; i++) {
-        var f = files[i]
-        var fileReader = new FileReader();
-        fileReader.onload = (function(e) {
-          var file = e.target;
-          $("<span class=\"pip\">" +
-            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-            "<br/><span class=\"remove\">Remove image</span>" +
-            "</span>").insertAfter("#files");
-          $(".remove").click(function(){
-            $(this).parent(".pip").remove();
-          });
-
-          // Old code here
-          /*$("<img></img>", {
-            class: "imageThumb",
-            src: e.target.result,
-            title: file.name + " | Click to remove"
-          }).insertAfter("#files").click(function(){$(this).remove();});*/
-
-        });
-        fileReader.readAsDataURL(f);
-      }
-      console.log(files);
+                });
+                fileReader.readAsDataURL(f);
+            }
+            console.log(files);
+            });
+            } else {
+                alert("Your browser doesn't support to File API")
+            }
     });
-  } else {
-    alert("Your browser doesn't support to File API")
-  }
-
-
-});
 
 </script>
 @endsection

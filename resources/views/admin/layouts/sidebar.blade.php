@@ -11,19 +11,22 @@
     @php 
     $data = Auth::user();
     @endphp
-    <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="collapse" href="#product-basic" aria-expanded="false" aria-controls="ui-basic">
+    <li class="nav-item @if( request()->routeIs(['category.addEdit'])) active @endif">
+
+      <a class="nav-link " data-bs-toggle="collapse" href="#product-basic" aria-expanded="false" aria-controls="ui-basic">
         <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
         <span class="menu-title">Poduct Modue</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="product-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Product Category</a></li>
+          <li class="nav-item"> <a class="nav-link @if(  request()->routeIs(['category.addEdit'])) active @endif"  href="{{ route('category') }}">Product Category</a></li>
           <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Product</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html"></a></li>
         </ul>
       </div>
+    </li>
+    <li class="nav-item">
+    
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
         <span class="menu-title">UI Elements</span>

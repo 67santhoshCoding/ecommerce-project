@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Admin\Category;
 
 class User extends Authenticatable
 {
@@ -20,7 +21,14 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'mobile',
         'password',
+        'profile',
+        'address',
+        'status_approvel',
+        'role_id',
+        'status',
+
     ];
 
     /**
@@ -41,4 +49,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'id','parent_id')->select('*');
+    }
 }

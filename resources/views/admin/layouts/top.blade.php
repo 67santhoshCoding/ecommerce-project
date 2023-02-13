@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Ecommerce Site</title>
     @include('admin.layouts.common.common_css')
+    @include('admin.layouts.common._script')
   </head>
   <body>
   <div class="container-scroller">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo.svg') }}" alt="logo" /></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('public/assets/images/logo.svg') }}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('public/assets/images/logo-mini.svg') }}" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -87,9 +88,9 @@
                 <div class="nav-profile-img">
                     <?php $data = Auth::user(); ?>                 
                     <?php if(!empty($data->profile)){ ?>
-                    <img src="{{ asset('/'.$data->profile) }}" alt="image">
+                    <img src="{{ asset('/public/'.$data->profile) }}" alt="image">
                     <?php }else{ ?>
-                        <img src="{{ asset('assets/images/profile_images.jpeg') }}" alt="image">
+                        <img src="{{ asset('public/assets/images/profile_images.jpeg') }}" alt="image">
                     <?php } ?>
                 </div>
                 <div class="nav-profile-text">
@@ -103,9 +104,9 @@
                 <?php $data = Auth::user(); ?>
                  
                     <?php if(!empty($data->profile)){ ?>
-                    <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('/'.$data->profile) }}" alt="">
+                    <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('/public/'.$data->profile) }}" alt="">
                     <?php }else{ ?>
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('assets/images/profile_images.jpeg') }}" alt="">
+                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('public/assets/images/profile_images.jpeg') }}" alt="">
                     <?php } ?>
 
                 </div>
@@ -159,7 +160,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face4.jpg" alt="image" class="profile-pic">
+                    <img src="{{ asset('public/assets/images/faces/face4.jpg') }}" alt="image" class="profile-pic">
                     </div>
                     <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
@@ -169,7 +170,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
+                    <img src="{{ asset('public/assets/images/faces/face2.jpg') }}" alt="image" class="profile-pic">
                     </div>
                     <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
@@ -179,7 +180,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face3.jpg" alt="image" class="profile-pic">
+                    <img src="{{ asset('public/assets/images/faces/face3.jpg') }}" alt="image" class="profile-pic">
                     </div>
                     <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>

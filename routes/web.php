@@ -17,12 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::prefix('admin')->middleware('auth')->group(function(){
+
     Route::get('/profile-details',[App\Http\Controllers\Admin\SettingController::class,'index'])->name('profile-details');
     Route::post('/profile-save',[App\Http\Controllers\Admin\SettingController::class,'store'])->name('profile-save');
     Route::post('/profile_image_remove',[App\Http\Controllers\Admin\SettingController::class,'profileImageDelete'])->name('profile_image_remove');
     Route::get('/setting',[App\Http\Controllers\Admin\SettingController::class,'settingPage'])->name('setting');
-    
+
+    Route::prefix('category')->group(function(){
+        Route::get('/',[App\Http\Controllers\Admin\CategoryController::class,'index'])->name('category');
+        Route::get('/addOrEdit/{id?}',[App\Http\Controllers\Admin\CategoryController::class,'addOrEdit'])->name('category.addEdit');
+        // Route::get('/edit/{id?}',[App\Http\Controllers\Admin\CategoryController::class,'edit'])->name('category.editData');
+        Route::post('/save',[App\Http\Controllers\Admin\CategoryController::class,'store'])->name('category.add');
+        Route::post('/delete',[App\Http\Controllers\Admin\CategoryController::class,'delete'])->name('category.delete');
+        Route::post('/status',[App\Http\Controllers\Admin\CategoryController::class,'status'])->name('category.status');
+
+    });
+
 });
+
     
 
 
