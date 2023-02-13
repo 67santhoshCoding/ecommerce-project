@@ -19,7 +19,11 @@
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
+            {{-- <h3>Ecommerce Site</h3> --}}
+
             </button>
+            <h1 class="navbar-toggler align-self-center" style="margin-top: 50px">Ecommerce Site</h1>
+
             <div class="search-field d-none d-xl-block">
             <form class="d-flex align-items-center h-100" action="#">
                 <div class="input-group">

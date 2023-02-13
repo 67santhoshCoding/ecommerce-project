@@ -8,14 +8,13 @@
 @endsection
 
 <div class="content-wrapper">
+  @include('admin.layouts._breadcrum')
   <div class="card">
     <div class="card-header" style="background-color: white">
       <div class="row">
-        <div class="col-md-10">
-          <h4 class="card-title">Category List</h4>
-        </div>
+        <div class="col-md-10"></div>
         <div class="col-md-2">
-          <a class="btn btn-primary" href="{{ route('category.addEdit') }}" >Add Category</a>
+          <a class="btn btn-primary " href="{{ route('category.addEdit') }}" >Add Category</a>
         </div>
       </div>
     </div>

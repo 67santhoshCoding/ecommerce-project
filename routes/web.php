@@ -26,11 +26,13 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::prefix('category')->group(function(){
         Route::get('/',[App\Http\Controllers\Admin\CategoryController::class,'index'])->name('category');
         Route::get('/addOrEdit/{id?}',[App\Http\Controllers\Admin\CategoryController::class,'addOrEdit'])->name('category.addEdit');
-        // Route::get('/edit/{id?}',[App\Http\Controllers\Admin\CategoryController::class,'edit'])->name('category.editData');
         Route::post('/save',[App\Http\Controllers\Admin\CategoryController::class,'store'])->name('category.add');
         Route::post('/delete',[App\Http\Controllers\Admin\CategoryController::class,'delete'])->name('category.delete');
         Route::post('/status',[App\Http\Controllers\Admin\CategoryController::class,'status'])->name('category.status');
-
+    });
+    Route::prefix('product')->group(function(){
+        Route::get('/',[App\Http\Controllers\Admin\ProductController::class,'index'])->name('product');
+        Route::get('/addOrEdit',[App\Http\Controllers\Admin\ProductController::class,'addEdit'])->name('category.addEdit');
     });
 
 });

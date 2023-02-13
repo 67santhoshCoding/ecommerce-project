@@ -18,6 +18,8 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
+        $title                  = "Category List";
+        $breadCrum              = array('Category', 'Categories List');
         if($request->ajax()){
           
             $data = Category::select('categories.*',
@@ -66,7 +68,7 @@ class CategoryController extends Controller
 
         }
 
-        return view('admin.partials.product.category.index');
+        return view('admin.partials.product.category.index',compact('title','breadCrum'));
     }
     public function addOrEdit(Request $request)
     {

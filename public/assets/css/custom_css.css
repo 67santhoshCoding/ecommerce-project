@@ -106,4 +106,9 @@ input[type="checkbox"]::after {
 input:checked[type="checkbox"]::after {
     left: 50%;
 }
+.card_title {
+  color: #181C32 !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
 
